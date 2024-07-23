@@ -13,7 +13,7 @@ const getAllTodos = async (): Promise<TodoType[]> => {
   }
 };
 
-const createTodo = async (todo: TodoType): Promise<TodoType> => {
+const createTodo = async (todo: Omit<TodoType, 'id'>): Promise<TodoType> => {
   try {
     const response = await axios.post(BASE_URL, todo);
     return response.data;
@@ -24,14 +24,13 @@ const createTodo = async (todo: TodoType): Promise<TodoType> => {
 };
 
 const updateTodo = async (
-  id: string,
   updatedTodo: TodoType,
 ): Promise<TodoType> => {
   try {
-    const response = await axios.put(`${BASE_URL}/${id}`, updatedTodo);
+    const response = await axios.put(`${BASE_URL}/${updatedTodo.id}`, updatedTodo);
     return response.data;
   } catch (error) {
-    console.error(`Error updating todo with id ${id}:`, error);
+    console.error(`Error updating todo with id ${updatedTodo.id}:`, error);
     throw error;
   }
 };
