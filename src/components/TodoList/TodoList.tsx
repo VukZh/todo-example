@@ -8,13 +8,10 @@ export const TodoList = () => {
   const { todos, setTodos, setShowEditModal, setCurrentTodoId } =
     useContext(Context);
 
-  console.log('selectedTodo', todos);
-
   useEffect(() => {
     const getTodos = async () => {
       try {
         const todos = (await getAllTodos()) as TodoType[];
-        console.log(todos);
         setTodos(todos);
       } catch (error) {
         console.log(error);
@@ -31,11 +28,14 @@ export const TodoList = () => {
   return (
     <div>
       <button
-        className="fixed top-1 inline-flex justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 sm:ml-3 sm:w-auto"
+        className="fixed top-3 left-1 inline-flex justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 sm:ml-3 sm:w-auto transition-colors duration-200 ease-in-out"
         onClick={createTodoHandle}>
-        Create
+        Create todo
       </button>
-      {todos?.length ? 'My todos :' : 'No todos found'}
+      <div className="font-bold pb-2 text-xl text-cyan-500">
+        {todos?.length ? 'My todos :' : 'No todos found'}
+      </div>
+
       {todos?.length
         ? todos.map((todo) => (
             <Todo
