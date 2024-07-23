@@ -19,7 +19,7 @@ export const TodoDelete = () => {
   const deleteTodoHandle = async () => {
     setIsLoading(true);
     try {
-      await deleteTodo(todo.id);
+      await deleteTodo(todo?.id!);
       const todos = (await getAllTodos()) as TodoType[];
       setTodos(todos);
     } catch (error) {
@@ -72,7 +72,7 @@ export const TodoDelete = () => {
                       </h3>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Are you sure you want to delete todo "{todo.title}"?
+                          Are you sure you want to delete todo "{todo?.title}"?
                         </p>
                       </div>
                     </div>

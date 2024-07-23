@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BrowserProvider, Contract } from 'ethers';
 
 const BSC_PARAMS = {
@@ -32,7 +32,7 @@ export const Web3 = () => {
   const [epoch, setEpoch] = useState(0n);
 
   const MMConnect = async () => {
-    if (window.ethereum) {
+    if (window?.ethereum) {
       const ethersProvider = new BrowserProvider(window.ethereum);
       setProvider(ethersProvider);
     } else {
@@ -60,7 +60,7 @@ export const Web3 = () => {
   };
 
   const closeHandler = () => {
-    setProvider(null);
+    setProvider(undefined);
     setAccount('');
     setBalance(0n);
     setEpoch(0n);
@@ -74,7 +74,7 @@ export const Web3 = () => {
         Wallet connect
       </button>
       {account && <div>Address: {account}</div>}
-      {balance && (
+      {!!balance && (
         <div>
           Balance:{' '}
           {(
@@ -84,8 +84,8 @@ export const Web3 = () => {
           BNB
         </div>
       )}
-      {epoch && <div>Epoch: {epoch.toString()}</div>}
-      {epoch && (
+      {!!epoch && <div>Epoch: {epoch.toString()}</div>}
+      {!!epoch && (
         <button
           className="bg-red-700 text-white px-2 py-0.5 rounded-md hover:bg-red-800 justify-end transition-colors duration-200 ease-in-out w-24"
           onClick={closeHandler}>

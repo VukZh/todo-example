@@ -43,7 +43,7 @@ export const TodoEditCreate = () => {
   const addTodoHandler = async () => {
     setIsLoading(true);
     try {
-      const date = await createTodo({
+      await createTodo({
         title,
         description,
         createdAt,
@@ -61,7 +61,7 @@ export const TodoEditCreate = () => {
   const changeTodoHandler = async () => {
     setIsLoading(true);
     try {
-      const date = await updateTodo({
+      await updateTodo({
         id: currentTodoId,
         title,
         description,
