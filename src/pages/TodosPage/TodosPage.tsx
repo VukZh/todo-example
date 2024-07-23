@@ -1,4 +1,4 @@
-import { TodoDelete, TodoEditCreate, TodoList } from '../../components';
+import { TodoDelete, TodoEditCreate, TodoList, Web3 } from '../../components';
 
 export const TodosPage = () => {
   return (
@@ -6,6 +6,7 @@ export const TodosPage = () => {
       <TodoList />
       <TodoEditCreate />
       <TodoDelete />
+      <Web3 />
     </>
   );
 };
