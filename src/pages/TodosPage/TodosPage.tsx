@@ -1,11 +1,11 @@
-import { TodoEditCreate, TodoList } from '../../components';
+import { TodoDelete, TodoEditCreate, TodoList } from '../../components';
 
 export const TodosPage = () => {
   return (
     <>
       <TodoList />
-      <TodoEditCreate isNew={true} />
-      <TodoEditCreate isNew={false} id="1" />
+      <TodoEditCreate />
+      <TodoDelete />
     </>
   );
 };

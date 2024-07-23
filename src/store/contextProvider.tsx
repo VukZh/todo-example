@@ -16,6 +16,8 @@ type ContextType = {
   setShowEditModal: Dispatch<SetStateAction<ContextType['showEditModal']>>;
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<ContextType['isLoading']>>;
+  currentTodoId: string;
+  setCurrentTodoId: Dispatch<SetStateAction<ContextType['currentTodoId']>>;
 };
 
 const initialContext: ContextType = {
@@ -27,6 +29,8 @@ const initialContext: ContextType = {
   setShowEditModal: () => {},
   isLoading: false,
   setIsLoading: () => {},
+  currentTodoId: '',
+  setCurrentTodoId: () => {},
 };
 
 export const Context = createContext<ContextType>(initialContext);
@@ -44,6 +48,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<ContextType['isLoading']>(
     initialContext.isLoading,
   );
+  const [currentTodoId, setCurrentTodoId] = useState<
+    ContextType['currentTodoId']
+  >(initialContext.currentTodoId);
 
   return (
     <Context.Provider
@@ -56,6 +63,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
         setShowEditModal,
         isLoading,
         setIsLoading,
+        currentTodoId,
+        setCurrentTodoId,
       }}>
       {children}
     </Context.Provider>

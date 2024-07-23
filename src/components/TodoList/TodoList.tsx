@@ -5,7 +5,8 @@ import { Todo } from '../';
 import { TodoType } from '../../types/types.ts';
 
 export const TodoList = () => {
-  const { todos, setTodos } = useContext(Context);
+  const { todos, setTodos, setShowEditModal, setCurrentTodoId } =
+    useContext(Context);
 
   console.log('selectedTodo', todos);
 
@@ -22,8 +23,18 @@ export const TodoList = () => {
     getTodos();
   }, []);
 
+  const createTodoHandle = () => {
+    setShowEditModal(true);
+    setCurrentTodoId('');
+  };
+
   return (
     <div>
+      <button
+        className="fixed top-1 inline-flex justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 sm:ml-3 sm:w-auto"
+        onClick={createTodoHandle}>
+        Create
+      </button>
       {todos?.length ? 'My todos :' : 'No todos found'}
       {todos?.length
         ? todos.map((todo) => (
