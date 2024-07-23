@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { TodoType } from '../types/types.ts';
 
 const BASE_URL = 'https://669f5eacb132e2c136fd951b.mockapi.io/api/v1/todos';
 
-const getAllTodos = async () => {
+const getAllTodos = async (): Promise<TodoType[]> => {
   try {
     const response = await axios.get(BASE_URL);
     return response.data;
@@ -12,7 +13,7 @@ const getAllTodos = async () => {
   }
 };
 
-const createTodo = async (todo) => {
+const createTodo = async (todo: TodoType): Promise<TodoType> => {
   try {
     const response = await axios.post(BASE_URL, todo);
     return response.data;
@@ -22,7 +23,10 @@ const createTodo = async (todo) => {
   }
 };
 
-const updateTodo = async (id, updatedTodo) => {
+const updateTodo = async (
+  id: string,
+  updatedTodo: TodoType,
+): Promise<TodoType> => {
   try {
     const response = await axios.put(`${BASE_URL}/${id}`, updatedTodo);
     return response.data;
@@ -32,7 +36,7 @@ const updateTodo = async (id, updatedTodo) => {
   }
 };
 
-const deleteTodo = async (id) => {
+const deleteTodo = async (id: string): Promise<TodoType> => {
   try {
     const response = await axios.delete(`${BASE_URL}/${id}`);
     return response.data;

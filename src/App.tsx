@@ -1,10 +1,12 @@
 import './App.css';
+import { TodosPage } from './pages';
+import { ContextProvider } from './store/contextProvider.tsx';
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-light underline">Hello world!</h1>
-    </>
+    <ContextProvider>
+      <TodosPage />
+    </ContextProvider>
   );
 }
 
