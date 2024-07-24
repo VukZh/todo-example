@@ -4,8 +4,12 @@ import { TodoType } from '../../types/types.ts';
 
 export const Todo = (todo: TodoType) => {
   const { id, title, description, createdAt } = todo;
-  const { setShowDeleteModal, setCurrentTodoId, setShowEditModal } =
-    useContext(Context);
+  const {
+    setShowDeleteModal,
+    setCurrentTodoId,
+    setShowEditModal,
+    currentTodoId,
+  } = useContext(Context);
   const showDeleteModalHandle = () => {
     setShowDeleteModal(true);
     setCurrentTodoId(id);
@@ -17,7 +21,8 @@ export const Todo = (todo: TodoType) => {
   };
 
   return (
-    <div className="flex flex-row justify-between m-2 p-1 border-2 border-gray-700 rounded-md">
+    <div
+      className={`${currentTodoId === id && 'bg-gray-300'} flex flex-row justify-between m-2 p-1 border-2 border-gray-700 rounded-md`}>
       <div className="flex justify-start">
         <div className="font-medium">{title}</div>
         <div className="font-light ml-2">- {description}</div>
